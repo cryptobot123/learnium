@@ -1,0 +1,37 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/learnium_bg.qm</file>
+        <file alias="ca">locale/learnium_ca.qm</file>
+        <file alias="cs">locale/learnium_cs.qm</file>
+        <file alias="da">locale/learnium_da.qm</file>
+        <file alias="de">locale/learnium_de.qm</file>
+        <file alias="en">locale/learnium_en.qm</file>
+        <file alias="en_GB">locale/learnium_en_GB.qm</file>
+        <file alias="en_US">locale/learnium_en_US.qm</file>
+        <file alias="eo">locale/learnium_eo.qm</file>
+        <file alias="es">locale/learnium_es.qm</file>
+        <file alias="es_ES">locale/learnium_es_ES.qm</file>
+        <file alias="fi">locale/learnium_fi.qm</file>
+        <file alias="fr_FR">locale/learnium_fr_FR.qm</file>
+        <file alias="hi_IN">locale/learnium_hi_IN.qm</file>
+        <file alias="hr">locale/learnium_hr.qm</file>
+        <file alias="hr_HR">locale/learnium_hr_HR.qm</file>
+        <file alias="it">locale/learnium_it.qm</file>
+        <file alias="ja">locale/learnium_ja.qm</file>
+        <file alias="ko_KR">locale/learnium_ko_KR.qm</file>
+        <file alias="lt_LT">locale/learnium_lt_LT.qm</file>
+        <file alias="nl">locale/learnium_nl.qm</file>
+        <file alias="pl">locale/learnium_pl.qm</file>
+        <file alias="pt">locale/learnium_pt.qm</file>
+        <file alias="pt_BR">locale/learnium_pt_BR.qm</file>
+        <file alias="ro_RO">locale/learnium_ro_RO.qm</file>
+        <file alias="ru">locale/learnium_ru.qm</file>
+        <file alias="sk">locale/learnium_sk.qm</file>
+        <file alias="sv">locale/learnium_sv.qm</file>
+        <file alias="tr">locale/learnium_tr.qm</file>
+        <file alias="uk">locale/learnium_uk.qm</file>
+        <file alias="vi">locale/learnium_vi.qm</file>
+        <file alias="zh_CN">locale/learnium_zh_CN.qm</file>
+        <file alias="zh_TW">locale/learnium_zh_TW.qm</file>
+    </qresource>
+</RCC>

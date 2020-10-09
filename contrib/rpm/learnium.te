@@ -1,0 +1,81 @@
+policy_module(learnium, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type learnium_t;
+type learnium_exec_t;
+init_daemon_domain(learnium_t, learnium_exec_t)
+
+permissive learnium_t;
+
+type learnium_initrc_exec_t;
+init_script_file(learnium_initrc_exec_t)
+
+type learnium_conf_t;
+files_type(learnium_conf_t)
+
+type learnium_var_lib_t;
+files_type(learnium_var_lib_t)
+
+type learnium_var_run_t;
+files_type(learnium_var_run_t)
+
+type learnium_port_t;
+corenet_port(learnium_port_t)
+
+########################################
+#
+# learnium local policy
+#
+allow learnium_t self:process { fork };
+
+allow learnium_t self:fifo_file rw_fifo_file_perms;
+allow learnium_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(learnium_t, learnium_conf_t, learnium_conf_t)
+manage_files_pattern(learnium_t, learnium_conf_t, learnium_conf_t)
+
+manage_dirs_pattern(learnium_t, learnium_var_lib_t, learnium_var_lib_t)
+manage_files_pattern(learnium_t, learnium_var_lib_t, learnium_var_lib_t)
+files_var_lib_filetrans(learnium_t, learnium_var_lib_t, { dir file })
+
+manage_dirs_pattern(learnium_t, learnium_var_run_t, learnium_var_run_t)
+manage_files_pattern(learnium_t, learnium_var_run_t, learnium_var_run_t)
+
+sysnet_dns_name_resolve(learnium_t)
+corenet_all_recvfrom_unlabeled(learnium_t)
+
+allow learnium_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(learnium_t)
+corenet_tcp_sendrecv_generic_node(learnium_t)
+corenet_tcp_sendrecv_all_ports(learnium_t)
+corenet_tcp_bind_generic_node(learnium_t)
+
+gen_require(`
+    type learnium_port_t;
+')
+allow learnium_t learnium_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type learnium_port_t;
+')
+allow learnium_t learnium_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(learnium_t)
+
+files_read_etc_files(learnium_t)
+
+miscfiles_read_localization(learnium_t)
+
+sysnet_dns_name_resolve(learnium_t)
+
+allow learnium_t learnium_exec_t:file execute_no_trans;
+allow learnium_t self:process setsched;
+corecmd_exec_ls(learnium_t)
+corenet_tcp_connect_http_port(learnium_t)
+dev_read_urand(learnium_t)
+fs_getattr_xattr_fs(learnium_t)
+kernel_read_system_state(learnium_t)

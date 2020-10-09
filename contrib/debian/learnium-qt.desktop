@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Learnium
+Comment=Learnium P2P Cryptocurrency
+Comment[fr]=Learnium, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Learnium, eşten eşe kriptografik sanal para birimi
+Exec=learnium-qt %u
+Terminal=false
+Type=Application
+Icon=learnium128
+MimeType=x-scheme-handler/learnium;
+Categories=Office;Finance;
+StartupWMClass=Learnium-qt

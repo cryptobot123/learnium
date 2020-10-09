@@ -1,0 +1,15 @@
+# http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-1.0.html
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Learnium
+Comment=Learnium QT test network
+GenericName=Learnium Digital Currency QT client testnet network
+Exec=learnium-core.qt-testnet %u
+Terminal=false
+Type=Application
+Icon=${SNAP}/share/pixmaps/learnium_testnet.png
+MimeType=x-scheme-handler/lra;
+Categories=X-Office;X-Finance;
+Keywords=internet;learnium;zlra;tlra;core;wallet;qt;testnet;snap;launchpad;crypto;digital;currency;coin;token;zerocoin;
+Version=1.0

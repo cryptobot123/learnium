@@ -1,0 +1,3 @@
+usr/local/bin/learniumd usr/bin
+usr/local/bin/learnium-cli usr/bin
+debian/examples/learnium.conf etc/learnium

@@ -1,0 +1,6 @@
+usr/local/bin/learnium-qt usr/bin
+share/pixmaps/learnium32.xpm usr/share/pixmaps
+share/pixmaps/learnium16.xpm usr/share/pixmaps
+share/pixmaps/learnium128.png usr/share/pixmaps
+debian/learnium-qt.desktop usr/share/applications
+debian/learnium-qt.protocol usr/share/kde4/services/

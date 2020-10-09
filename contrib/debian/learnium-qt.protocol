@@ -1,0 +1,11 @@
+[Protocol]
+exec=learnium-qt '%u'
+protocol=learnium
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false

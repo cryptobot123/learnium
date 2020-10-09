@@ -1,0 +1,157 @@
+
+## <summary>policy for learnium</summary>
+
+
+########################################
+## <summary>
+##	Transition to learnium.
+## </summary>
+## <param name="domain">
+## <summary>
+##	Domain allowed to transition.
+## </summary>
+## </param>
+#
+interface(`learnium_domtrans',`
+	gen_require(`
+		type learnium_t, learnium_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, learnium_exec_t, learnium_t)
+')
+
+
+########################################
+## <summary>
+##	Execute learnium server in the learnium domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`learnium_initrc_domtrans',`
+	gen_require(`
+		type learnium_initrc_exec_t;
+	')
+
+	init_labeled_script_domtrans($1, learnium_initrc_exec_t)
+')
+
+
+########################################
+## <summary>
+##	Search learnium lib directories.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`learnium_search_lib',`
+	gen_require(`
+		type learnium_var_lib_t;
+	')
+
+	allow $1 learnium_var_lib_t:dir search_dir_perms;
+	files_search_var_lib($1)
+')
+
+########################################
+## <summary>
+##	Read learnium lib files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`learnium_read_lib_files',`
+	gen_require(`
+		type learnium_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	read_files_pattern($1, learnium_var_lib_t, learnium_var_lib_t)
+')
+
+########################################
+## <summary>
+##	Manage learnium lib files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`learnium_manage_lib_files',`
+	gen_require(`
+		type learnium_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	manage_files_pattern($1, learnium_var_lib_t, learnium_var_lib_t)
+')
+
+########################################
+## <summary>
+##	Manage learnium lib directories.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`learnium_manage_lib_dirs',`
+	gen_require(`
+		type learnium_var_lib_t;
+	')
+
+	files_search_var_lib($1)
+	manage_dirs_pattern($1, learnium_var_lib_t, learnium_var_lib_t)
+')
+
+
+########################################
+## <summary>
+##	All of the rules required to administrate
+##	a learnium environment
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+## <param name="role">
+##	<summary>
+##	Role allowed access.
+##	</summary>
+## </param>
+## <rolecap/>
+#
+interface(`learnium_admin',`
+	gen_require(`
+		type learnium_t;
+		type learnium_initrc_exec_t;
+		type learnium_var_lib_t;
+	')
+
+	allow $1 learnium_t:process { ptrace signal_perms };
+	ps_process_pattern($1, learnium_t)
+
+	learnium_initrc_domtrans($1)
+	domain_system_change_exemption($1)
+	role_transition $2 learnium_initrc_exec_t system_r;
+	allow $2 system_r;
+
+	files_search_var_lib($1)
+	admin_pattern($1, learnium_var_lib_t)
+
+')
+
